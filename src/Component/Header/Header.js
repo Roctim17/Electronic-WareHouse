@@ -15,7 +15,7 @@ const Header = () => {
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             <Link className="nav-link" to="/about">About</Link>
                             <Link className="nav-link" to="/blog">Blog</Link>
-                            <Link className="nav-link disabled" to="/signin" tabindex="-1" aria-disabled="true">Signin</Link>
+                            <Link className="nav-link" to="/signin" >Signin</Link>
                         </div>
                     </div>
                 </div>
