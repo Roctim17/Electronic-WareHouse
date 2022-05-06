@@ -1,0 +1,19 @@
+.single-product {
+    width: 350px;
+    height: auto;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: darkgray;
+    background-color: rgb(247, 242, 242);
+}
+
+.single-product img {
+    width: 320px;
+    height: 280px;
+    border-radius: 8px;
+}
+
+.single-product h3 h5 h6 {
+    margin: 0;
+}

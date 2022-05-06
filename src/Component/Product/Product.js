@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useProduct from '../../Hooks/useProduct';
 import SingleProduct from '../SingleProduct/SingleProduct';
+import './Product.css'
 
 const Product = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/product')
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, [])
+    const [products] = useProduct([]);
+
     return (
-        <div>
-            <div className="container">
+        <div className='product-container'>
+            <h1> Product</h1>
+            <div className="product">
                 {
                     products.map(product => <SingleProduct
-                        key={products._id}
-                        products={products}
+                        key={product._id}
+                        product={product}
                     >
                     </SingleProduct>)
                 }
-
             </div>
-
         </div>
     );
 };
