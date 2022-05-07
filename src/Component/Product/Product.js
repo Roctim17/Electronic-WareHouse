@@ -7,11 +7,11 @@ const Product = () => {
     const [products] = useProduct([]);
 
     return (
-        <div className='product-container'>
+        <div className='product-container p-5'>
             <h1> Product</h1>
             <div className="product">
                 {
-                    products.map(product => <SingleProduct
+                    products.slice(0, 6).map(product => <SingleProduct
                         key={product._id}
                         product={product}
                     >

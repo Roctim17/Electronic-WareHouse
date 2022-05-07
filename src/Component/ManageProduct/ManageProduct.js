@@ -1,4 +1,5 @@
 import React from 'react';
+import './ManageProduct.css'
 import useProduct from '../../Hooks/useProduct';
 
 const ManageProduct = () => {
@@ -21,12 +22,21 @@ const ManageProduct = () => {
         }
     }
     return (
-        <div>
+        <div className='row text-center mx-auto'>
             <h1>Manage Product</h1>
-            <div className="">
+            <div className="col-md-12 col-sm-12 m-auto">
                 {
                     products.map(product => <div key={product._id}>
-                        <h3>{product.name} <button onClick={() => handleDelete(product._id)}>Delete</button></h3>
+                        <div className="manage-product d-flex w-50 m-auto justify-content-between p-3">
+                            <img src={product.image} alt="" />
+                            <h5>{product.name} </h5>
+                            <h6>Price: {product.price}</h6>
+                            <h6>Supplier: {product.supplier}</h6>
+                            <h6>Quantity: {product.quantity}</h6>
+                            <button className='btn btn-danger' onClick={() => handleDelete(product._id)}><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div>
+
+
                     </div>)
                 }
             </div>
