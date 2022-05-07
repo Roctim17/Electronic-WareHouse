@@ -1,7 +1,30 @@
-import React from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../Firebase.init';
 
 const Header = () => {
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser({});
+            }
+        });
+    }, [])
+
+
+    const handleLogOut = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,7 +40,13 @@ const Header = () => {
                             <Link className="nav-link" to="/blog">Blog</Link>
                             <Link className="nav-link" to="/addproduct">Add Product</Link>
                             <Link className="nav-link" to="/manage">Manage</Link>
-                            <Link className="nav-link" to="/signin" >Signin</Link>
+                            {user?.uid ? (
+                                <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
+                            ) : (<Link className="nav-link" to="/login" >Login</Link>)
+
+
+                            }
+
                         </div>
                     </div>
                 </div>
