@@ -1,0 +1,12 @@
+.add-product {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url(https://i.ibb.co/mhHSYF0/pexels-otavio-fonseca-4665064.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+
+.input {
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+}
