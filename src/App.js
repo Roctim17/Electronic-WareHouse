@@ -11,10 +11,12 @@ import Login from './Component/Login/Login';
 import ManageProduct from './Component/ManageProduct/ManageProduct';
 import NotFound from './Component/NotFound/NotFound';
 import Signup from './Component/Signup/Signup';
+import { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <div className="App">
       <Header></Header>
+      <Toaster></Toaster>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>

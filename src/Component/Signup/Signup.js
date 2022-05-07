@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../Firebase.init";
+import toast from "react-hot-toast";
 
 const provider = new GoogleAuthProvider();
 
@@ -49,6 +50,7 @@ const Signup = () => {
     const handleSignup = (e) => {
         e.preventDefault();
 
+
         if (email.value === '') {
             setEmail({ value: '', error: 'Email is required' });
         }
@@ -59,14 +61,17 @@ const Signup = () => {
         if (email.value && password.value && confirmPassword === password.value) {
             createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then((userCredential) => {
-                    // Signed in 
                     const user = userCredential.user;
-                    // ...
+                    navigate('/')
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    // ..
+                    if (errorMessage.includes("email-already-in-use")) {
+                        toast.error("Already Exist", { id: "error" });
+                    } else {
+                        toast.error(errorMessage, { id: "error" });
+                    }
                 });
         }
     };
