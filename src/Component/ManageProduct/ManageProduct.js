@@ -1,6 +1,7 @@
 import React from 'react';
 import './ManageProduct.css'
 import useProduct from '../../Hooks/useProduct';
+import { Link } from 'react-router-dom';
 
 const ManageProduct = () => {
     const [products, setProducts] = useProduct([]);
@@ -24,6 +25,10 @@ const ManageProduct = () => {
     return (
         <div className='row text-center mx-auto'>
             <h1>Manage Product</h1>
+
+            <Link className="nav-link" to="/AddNewProduct"><button className='btn btn-success'>Add New Product</button> </Link>
+
+
             <div className="col-md-12 col-sm-12 m-auto">
                 {
                     products.map(product => <div key={product._id}>

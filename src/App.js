@@ -14,6 +14,7 @@ import { Toaster } from 'react-hot-toast';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
 import ProductUpdate from './Component/ProductUpdate/ProductUpdate';
 import Product from './Component/Product/Product';
+import AddProduct from './Component/AddProduct/AddProduct';
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,11 @@ function App() {
         <Route path='/manage' element={
           <RequireAuth>
             <ManageProduct></ManageProduct>
+          </RequireAuth>
+        }></Route>
+        <Route path='/AddNewProduct' element={
+          <RequireAuth>
+            <AddProduct></AddProduct>
           </RequireAuth>
         }></Route>
 

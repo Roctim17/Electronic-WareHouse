@@ -1,0 +1,38 @@
+#contact {
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url(https://i.ibb.co/85Mk9tT/pexels-ahmed-aqtai-63572.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+
+}
+
+.contact {
+    border: 1px;
+    padding: 10px 50px;
+    border-radius: 5px;
+    margin: 10px;
+    width: 78.5%;
+    text-align: center;
+    background-color: #ffffff60;
+    box-shadow: 5px 5px 9px;
+}
+
+@media only screen and (max-width:688px) {
+    #contact {
+
+        background-position: bottom;
+        background-size: 100%;
+        background-position-y: 100%;
+    }
+
+    .contact {
+        border: 1px;
+        padding: 10px 0px;
+        border-radius: 5px;
+        margin: 10px;
+        width: 95%;
+
+        box-shadow: 5px 5px 9px;
+    }
+}
