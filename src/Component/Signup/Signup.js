@@ -19,8 +19,7 @@ const Signup = () => {
                 const user = result.user;
                 navigate('/')
             }).catch((error) => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                console.error(error);
 
             });
     }
@@ -58,10 +57,11 @@ const Signup = () => {
             setPassword({ value: '', error: 'Password is required' });
         }
 
-        if (email.value && password.value && confirmPassword === password.value) {
+        if (email.value && password.value && confirmPassword.value === password.value) {
             createUserWithEmailAndPassword(auth, email.value, password.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
+                    toast.success("User Created", { id: "error" });
                     navigate('/')
                 })
                 .catch((error) => {

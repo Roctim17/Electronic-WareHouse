@@ -1,6 +1,5 @@
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../Firebase.init';
 import './login.css';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -21,6 +20,7 @@ const Login = () => {
 
             });
     }
+
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -37,6 +37,9 @@ const Login = () => {
                 const errorMessage = error.message;
             });
     }
+
+
+
 
 
     return (
@@ -56,6 +59,9 @@ const Login = () => {
                             <input type='password' name='password' id='password' />
                         </div>
                     </div>
+                    <p >
+                        Forgot Password?  <Link to='#'>Reset Password </Link>
+                    </p>
                     <button type='submit' className='auth-form-submit'>
                         Login
                     </button>
