@@ -7,7 +7,7 @@ const Product = () => {
     const [products] = useProduct([]);
 
     return (
-        <div className='product-container p-5'>
+        <div className='product-container pt-3'>
             <h1> Product</h1>
             <div className="product">
                 {

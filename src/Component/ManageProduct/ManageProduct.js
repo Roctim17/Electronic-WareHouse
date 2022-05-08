@@ -27,7 +27,7 @@ const ManageProduct = () => {
             <div className="col-md-12 col-sm-12 m-auto">
                 {
                     products.map(product => <div key={product._id}>
-                        <div className="manage-product d-flex w-50 m-auto justify-content-between p-3">
+                        <div className="manage-product w-50 m-auto p-3">
                             <img src={product.image} alt="" />
                             <h5>{product.name} </h5>
                             <h6>Price: {product.price}</h6>

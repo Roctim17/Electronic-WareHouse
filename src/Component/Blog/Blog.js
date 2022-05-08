@@ -4,7 +4,7 @@ const Blog = () => {
     return (
         <div>
             <h1>Blog</h1>
-            <div className="row">
+            <div className="row p-3">
                 <div className="col-md-12 col-sm-12">
                     <div className="">
                         <h5>Difference between javascript and nodejs?</h5>
