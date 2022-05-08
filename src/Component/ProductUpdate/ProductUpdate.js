@@ -8,7 +8,7 @@ const ProductUpdate = () => {
     const [product, setProduct] = useState({});
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
-        console.log(url)
+        console.log(url, 'this')
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))

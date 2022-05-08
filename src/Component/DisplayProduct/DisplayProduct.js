@@ -1,7 +1,7 @@
 import React from 'react';
 import useProduct from '../../Hooks/useProduct';
-import SingleProduct from '../SingleProduct/SingleProduct';
-import './Product.css'
+import '../Product/Product.css'
+import DisplaySingleProduct from '../DisplaySingleProduct/DisplaySingleProduct';
 
 const DisplayProduct = () => {
     const [products] = useProduct([]);
@@ -11,11 +11,11 @@ const DisplayProduct = () => {
                 <h1> Product</h1>
                 <div className="product">
                     {
-                        products.slice(0, 6).map(product => <SingleProduct
+                        products.map(product => <DisplaySingleProduct
                             key={product._id}
                             product={product}
                         >
-                        </SingleProduct>)
+                        </DisplaySingleProduct>)
                     }
                 </div>
             </div>

@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import './SingleProduct.css';
 
 const SingleProduct = ({ product }) => {
-    const { id: _id, image, name, price, description, quantity, supplier } = product;
+    const { _id, image, name, price, description, quantity, supplier } = product;
     const navigate = useNavigate();
 
     const navigateToProductUpdate = id => {
-        navigate(`product/${id}`)
+        console.log(id)
+        navigate(`/product/${id}`)
     }
     return (
         <div className="container">
