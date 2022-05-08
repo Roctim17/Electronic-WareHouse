@@ -39,12 +39,9 @@ const Header = () => {
                             <Link className="nav-link" to="/about">About</Link>
                             <Link className="nav-link" to="/blog">Blog</Link>
                             <Link className="nav-link" to="/product">Product</Link>
-
-
-
+                            <Link className="nav-link" to="/manage">Manage</Link>
                             {user?.uid ? (
 
-                                <Link className="nav-link" to="/manage">Manage</Link>,
                                 <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
                             ) : (<Link className="nav-link" to="/login" >Login</Link>)
 
