@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
 import './ProductUpdate.css';
 
 const ProductUpdate = () => {
-    const { register, handleSubmit } = useForm();
+    // const { register, handleSubmit } = useForm();
     const { id } = useParams();
     const [product, setProduct] = useState({});
-    const [addQuantity, setAddQuantity] = useState(0);
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
         console.log(url, 'this')
@@ -16,13 +15,44 @@ const ProductUpdate = () => {
             .then(data => setProduct(data))
     }, []);
 
-    const onSubmit = data => {
-        console.log(data)
-        const newQuantity = parseInt(data.quantity);
-        setAddQuantity(newQuantity);
+    //  add quantity
+    const handleAddQuantity = e => {
+        e.preventDefault();
+        const quantity = e.target.quantity.value;
+        const updateQuantity = { quantity };
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateQuantity)
+        })
+            .then(res => res.json)
+            .then(data => {
+                console.log('success', data)
+                e.target.reset();
+            })
     }
-
-
+    //  Delivered
+    const handleDelivered = (e) => {
+        e.preventDefault();
+        const quantity = product.quantity - 1;
+        const updateQuantity = { quantity };
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateQuantity)
+        })
+            .then(res => res.json)
+            .then(data => {
+                console.log('success', data)
+                e.target.reset();
+            })
+    }
 
     return (
         <div>
@@ -34,14 +64,14 @@ const ProductUpdate = () => {
                     <img src={product.image} alt="" />
                     <h3>Product Name:  {product.name}</h3>
                     <h5>Price :{product.price}</h5>
-                    <h5>Quantity :{product.quantity + addQuantity}</h5>
+                    <h5>Quantity :{product.quantity}</h5>
                     <p>{product.description}</p>
                     <h6>Supplier Name: {product.supplier}</h6>
-                    <button className='btn btn-info mb-3'>Delivered</button>
-                    <form action="" onSubmit={handleSubmit(onSubmit)}>
+                    <button onClick={handleDelivered} className='btn btn-info mb-3'>Delivered</button>
+                    <form onSubmit={handleAddQuantity}>
 
                         <div className=" pb-3">
-                            <input className='mb-3' placeholder='quantity' type="number" {...register("quantity")} />
+                            <input className='mb-3' placeholder='quantity' type="number" name="quantity" />
                         </div>
                         <div className="">
                             <input className='btn btn-success' type="submit" value="Add Quantity" />

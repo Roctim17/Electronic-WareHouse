@@ -1,5 +1,6 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { auth } from '../../Firebase.init';
 
@@ -35,17 +36,31 @@ const Header = () => {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
-                            <Link className="nav-link" to="/">Home</Link>
-                            <Link className="nav-link" to="/about">About</Link>
-                            <Link className="nav-link" to="/blog">Blog</Link>
-                            <Link className="nav-link" to="/product">Product</Link>
-                            {user?.uid ? (
 
-                                <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
-                            ) : (<Link className="nav-link" to="/login" >Login</Link>)
+                            <Nav>
+                                <Link className="nav-link" to="/">Home</Link>
+                                <Link className="nav-link" to="/about">About</Link>
+                                <Link className="nav-link" to="/blog">Blog</Link>
+                                <Link className="nav-link" to="/product">Product</Link>
+                                {
+                                    user?.uid ? (<Link className="nav-link" to="/AddNewProduct">Add Product</Link>
+                                    ) : ('')
 
+                                }
+                                {
+                                    user?.uid ? (
+                                        <Link className="nav-link" to="/manage">Manage Product</Link>) : ('')
 
-                            }
+                                }
+                                {
+                                    user?.uid ? (
+                                        <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
+                                    ) : (
+                                        <Link className="nav-link" to="/login" >Login</Link>
+                                    )
+
+                                }
+                            </Nav>
 
                         </div>
                     </div>
