@@ -15,6 +15,7 @@ import RequireAuth from './Component/RequireAuth/RequireAuth';
 import ProductUpdate from './Component/ProductUpdate/ProductUpdate';
 import Product from './Component/Product/Product';
 import AddProduct from './Component/AddProduct/AddProduct';
+import MyProduct from './Component/MyProduct/MyProduct';
 function App() {
   return (
     <div className="App">
@@ -44,6 +45,7 @@ function App() {
         }></Route>
 
         <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/myProduct' element={<MyProduct></MyProduct>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         {/* <Route path='/*' element={<NotFound></NotFound>}></Route> */}

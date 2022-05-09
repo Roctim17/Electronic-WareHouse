@@ -52,6 +52,7 @@ const Header = () => {
                                         <Link className="nav-link" to="/manage">Manage Product</Link>) : ('')
 
                                 }
+                                <Link className="nav-link" to="/myProduct">My Product</Link>
                                 {
                                     user?.uid ? (
                                         <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
