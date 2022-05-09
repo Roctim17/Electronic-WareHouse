@@ -16,6 +16,8 @@ import ProductUpdate from './Component/ProductUpdate/ProductUpdate';
 import Product from './Component/Product/Product';
 import AddProduct from './Component/AddProduct/AddProduct';
 import MyProduct from './Component/MyProduct/MyProduct';
+import { ToastContainer } from 'react-bootstrap';
+import AddMyProduct from './Component/AddMyProduct/AddMyProduct';
 function App() {
   return (
     <div className="App">
@@ -43,14 +45,24 @@ function App() {
             <ProductUpdate></ProductUpdate>
           </RequireAuth>
         }></Route>
+        <Route path='/myProduct' element={
+          <RequireAuth>
+            <MyProduct></MyProduct>
+          </RequireAuth>
+        }></Route>
+        <Route path='/addMyProduct' element={
+          <RequireAuth>
+            <AddMyProduct></AddMyProduct>
+          </RequireAuth>
+        }></Route>
 
         <Route path='/blog' element={<Blog></Blog>}></Route>
-        <Route path='/myProduct' element={<MyProduct></MyProduct>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
