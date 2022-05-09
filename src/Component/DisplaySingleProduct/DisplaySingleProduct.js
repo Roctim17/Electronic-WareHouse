@@ -14,10 +14,10 @@ const DisplaySingleProduct = ({ product }) => {
                             <img src={image} alt="" />
                             <div className="">
                                 <h3>{name}</h3>
-                                <h5>{supplier}</h5>
+                                <h5>supplier Name:{supplier}</h5>
                                 <p>{description.slice(0, 150)} ...</p>
-                                <h6>{price} $ </h6>
-                                <h5>{quantity}</h5>
+                                <h6>Price: {price} $ </h6>
+                                <h5>Quantity: {quantity}</h5>
                             </div>
                         </div>
                     </div>
