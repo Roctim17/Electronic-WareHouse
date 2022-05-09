@@ -8,7 +8,7 @@ import Header from './Component/Header/Header';
 import Home from './Component/Home/Home';
 import Login from './Component/Login/Login';
 import ManageProduct from './Component/ManageProduct/ManageProduct';
-// import NotFound from './Component/NotFound/NotFound';
+import NotFound from './Component/NotFound/NotFound';
 import Signup from './Component/Signup/Signup';
 import { Toaster } from 'react-hot-toast';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
@@ -48,7 +48,7 @@ function App() {
         <Route path='/myProduct' element={<MyProduct></MyProduct>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
-        {/* <Route path='/*' element={<NotFound></NotFound>}></Route> */}
+        <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

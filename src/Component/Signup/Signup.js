@@ -1,139 +1,122 @@
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../../Firebase.init";
-import toast from "react-hot-toast";
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, } from 'react-firebase-hooks/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../../Firebase.init';
 
-const provider = new GoogleAuthProvider();
+
+
 
 const Signup = () => {
+    const [registered, setRegistered] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-    const [email, setEmail] = useState({ value: '', error: '' });
-    const [password, setPassword] = useState({ value: '', error: '' });
-    const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' });
 
-    const googleAuth = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const user = result.user;
-                navigate('/')
-            }).catch((error) => {
-                console.error(error);
 
-            });
+
+
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+
+
+    const handleNameBlur = (e) => {
+        setName(e.target.value);
+    }
+    const handleEmailBlur = (e) => {
+        setEmail(e.target.value);
+    }
+    const handlePasswordBlur = (e) => {
+        setPassword(e.target.value);
+    }
+    const handleConfirmPasswordBlur = (e) => {
+        setConfirmPassword(e.target.value);
+    }
+    const handleRegisteredChange = e => {
+
+        console.log(e.target.checked);
+        setRegistered(e.target.checked);
+    }
+    if (user) {
+        navigate('/')
     }
 
-    const handleEmail = (emailInput) => {
-        if (/\S+@\S+\.\S+/.test(emailInput)) {
-            setEmail({ value: emailInput, error: '' });
-        } else {
-            setEmail({ value: '', error: 'Invalid email' });
-        }
-    };
-    const handlePassword = (passwordInput) => {
-        if (passwordInput.length >= 8) {
-            setPassword({ value: passwordInput, error: '' });
-        } else {
-            setPassword({ value: '', error: 'Password must be 8 characters' });
-        }
-    }
-    const handleConfirmPassword = (confirmPassword) => {
-        if (confirmPassword === password.value) {
-            setConfirmPassword({ value: confirmPassword, error: '' });
-        } else {
-            setConfirmPassword({ value: '', error: "Password doesn't match" });
-        }
-    }
-
-    const handleSignup = (e) => {
+    const handleCreateUser = (e) => {
         e.preventDefault();
-
-
-        if (email.value === '') {
-            setEmail({ value: '', error: 'Email is required' });
+        if (password !== confirmPassword) {
+            setError('Confirm Password did not match')
+            return;
         }
-        if (password.value === '') {
-            setPassword({ value: '', error: 'Password is required' });
+        if (password.length < 6) {
+            setError('Password must be 6 characters or longer')
+            return;
         }
+        createUserWithEmailAndPassword(email, password);
+    }
+    // User for Google sign in
+    const [userGoogle, setUserGoogle] = useState({});
+    const provider = new GoogleAuthProvider();
 
-        if (email.value && password.value && confirmPassword.value === password.value) {
-            createUserWithEmailAndPassword(auth, email.value, password.value)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    toast.success("User Created", { id: "error" });
-                    navigate('/')
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    if (errorMessage.includes("email-already-in-use")) {
-                        toast.error("Already Exist", { id: "error" });
-                    } else {
-                        toast.error(errorMessage, { id: "error" });
-                    }
-                });
-        }
-    };
+    const handleGoogleSignUp = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                const user = result.user;
+                setUserGoogle(user);
 
-
+            })
+            .catch(error => {
+                console.log('error', error)
+            })
+    }
     return (
-        <div className="row">
-            <div className="col-md-12 col-sm-12">
-                <div className='auth-form-container '>
-                    <div className='auth-form'>
-                        <h1>Sign Up</h1>
-                        <form onSubmit={handleSignup}>
-                            <div className='input-field'>
-                                <label htmlFor='email'>Email</label>
-                                <div className='input-wrapper'>
-                                    <input onBlur={(e) => handleEmail(e.target.value)} type='email' name='email' id='email' />
-                                </div>
-                                {
-                                    email?.error && <p className="text-danger">{email.error}</p>
-                                }
-                            </div>
-                            <div className='input-field'>
-                                <label htmlFor='password'>Password</label>
-                                <div className='input-wrapper'>
-                                    <input onBlur={(e) => handlePassword(e.target.value)} type='password' name='password' id='password' />
-                                </div>
-                                {
-                                    password?.error && <p className="text-danger">{password.error}</p>
-                                }
-                            </div>
-                            <div className='input-field'>
-                                <label htmlFor='confirm-password'>Confirm Password</label>
-                                <div className='input-wrapper'>
-                                    <input onBlur={(e) => handleConfirmPassword(e.target.value)}
-                                        type='password'
-                                        name='confirmPassword'
-                                        id='confirm-password'
-                                    />
-                                </div>
-                                {
-                                    confirmPassword?.error && <p className="text-danger">{confirmPassword.error}</p>
-                                }
-                            </div>
-                            <button type='submit' className='auth-form-submit'>
-                                Sign Up
-                            </button>
-                        </form>
-                        <p className='redirect'>
-                            Already have an account?{" "}
-                            <span onClick={() => navigate("/login")}>Login</span>
+        <div className='signin'>
+            <h1>Sign Up</h1>
+            <div className=" row">
+                <div className="col-md-7 col-sm-12">
+                </div>
+                <div className="col-md-4 col-sm-12 form p-5">
+                    <Form onSubmit={handleCreateUser} className='w-100 m-auto'>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Your Name</Form.Label>
+                            <Form.Control onBlur={handleNameBlur} type="name" placeholder="Enter Your Name" />
+                            <Form.Text className="text-muted">
+
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Confirm Password</Form.Label>
+                            <Form.Control onBlur={handleConfirmPasswordBlur} type="password" placeholder="Confirm Password" />
+                            <Form.Text className="text-danger">
+                                <p>{error}</p>
+                            </Form.Text>
+                            <Form.Text className="text-light">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+                        <Button onChange={handleRegisteredChange} variant="primary" type="submit" className='w-100'>
+                            Sign Up
+                        </Button>
+                        <p>
+                            Already Have an Account? <Link to='/login'>Log in</Link>
                         </p>
-                        <div className='horizontal-divider'>
-                            <div className='line-left' />
-                            <p>or</p>
-                            <div className='line-right' />
-                        </div>
-                        <div className='input-wrapper'>
-                            <button onClick={googleAuth} className='google-auth'>
-                                <p> Continue with Google </p>
-                            </button>
-                        </div>
-                    </div>
+                        <div className="p-3 or">or</div>
+                        <Button onClick={handleGoogleSignUp} variant="light" type="submit" className='w-100'>
+                            <img src="/image/google.png" alt="" width={'25px'} />
+                            Sign Up With Google
+                        </Button>
+                    </Form>
                 </div>
             </div>
         </div>
