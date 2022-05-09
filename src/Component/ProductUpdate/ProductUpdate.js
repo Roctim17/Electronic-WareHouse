@@ -9,7 +9,6 @@ const ProductUpdate = () => {
     const [product, setProduct] = useState({});
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
-        console.log(url, 'this')
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -18,25 +17,35 @@ const ProductUpdate = () => {
     //  add quantity
     const handleAddQuantity = e => {
         e.preventDefault();
-        const quantity = e.target.quantity.value;
-        const updateQuantity = { quantity };
-        const url = `http://localhost:5000/product/${id}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateQuantity)
-        })
-            .then(res => res.json)
-            .then(data => {
-                console.log('success', data)
-                e.target.reset();
+        const previousQuantity = product.quantity;
+        const previousQuantityNumber = parseInt(previousQuantity);
+        const quantityNew = e.target.quantity.value;
+        const quantityNumber = parseInt(quantityNew);
+        if (quantityNew <= 0 || quantityNew == null) {
+            alert("Please add valid number")
+        }
+        if (quantityNew > 0) {
+            const quantity = previousQuantityNumber + quantityNumber;
+            const updateQuantity = { quantity };
+            const url = `http://localhost:5000/product/${id}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateQuantity)
             })
+                .then(res => res.json())
+                .then(data => {
+                    e.target.reset();
+                    setProduct(data);
+
+                })
+        }
+
     }
     //  Delivered
-    const handleDelivered = (e) => {
-        e.preventDefault();
+    const handleDelivered = () => {
         const quantity = product.quantity - 1;
         const updateQuantity = { quantity };
         const url = `http://localhost:5000/product/${id}`;
@@ -47,10 +56,9 @@ const ProductUpdate = () => {
             },
             body: JSON.stringify(updateQuantity)
         })
-            .then(res => res.json)
+            .then(res => res.json())
             .then(data => {
-                console.log('success', data)
-                e.target.reset();
+                setProduct(data);
             })
     }
 
@@ -71,7 +79,7 @@ const ProductUpdate = () => {
                     <form onSubmit={handleAddQuantity}>
 
                         <div className=" pb-3">
-                            <input className='mb-3' placeholder='quantity' type="number" name="quantity" />
+                            <input className='mb-3' placeholder='add new quantity' type="number" name="quantity" />
                         </div>
                         <div className="">
                             <input className='btn btn-success' type="submit" value="Add Quantity" />

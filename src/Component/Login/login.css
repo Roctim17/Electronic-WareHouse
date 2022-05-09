@@ -1,5 +1,6 @@
 .auth-form-container {
     width: 100%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,6 +22,7 @@
     margin: 40px 0;
     color: #1b4388;
 }
+
 
 .input-field {
     display: flex;
@@ -137,4 +139,24 @@
     margin-top: 10px;
     color: red;
     font-size: 15px;
+}
+
+@media only screen and (max-width:688px) {
+    .auth-form-container {
+        width: 90%;
+    }
+
+    .auth-form {
+        margin: 50px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin: auto;
+    }
+
+    .input-field input,
+    .google-auth {
+        width: 100%;
+    }
 }

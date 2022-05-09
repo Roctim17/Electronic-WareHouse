@@ -43,43 +43,47 @@ const Login = () => {
 
 
     return (
-        <div className='auth-form-container '>
-            <div className='auth-form'>
-                <h1>Login</h1>
-                <form onClick={handleLogin}>
-                    <div className='input-field'>
-                        <label htmlFor='email'>Email</label>
-                        <div className='input-wrapper'>
-                            <input type='text' name='email' id='email' />
+        <div className="row">
+            <div className="col-md-12 col-sm-12">
+                <div className='auth-form-container '>
+                    <div className='auth-form'>
+                        <h1>Login</h1>
+                        <form onClick={handleLogin}>
+                            <div className='input-field'>
+                                <label htmlFor='email'>Email</label>
+                                <div className='input-wrapper'>
+                                    <input type='text' name='email' id='email' />
+                                </div>
+                            </div>
+                            <div className='input-field'>
+                                <label htmlFor='password'>Password</label>
+                                <div className='input-wrapper'>
+                                    <input type='password' name='password' id='password' />
+                                </div>
+                            </div>
+                            <p >
+                                Forgot Password?  <Link to='#'>Reset Password </Link>
+                            </p>
+                            <button type='submit' className='auth-form-submit'>
+                                Login
+                            </button>
+                        </form>
+                        <p className='redirect'>
+                            New to electronic warehouse?{" "}
+                            <span onClick={() => navigate("/signup")}>Create New Account</span>
+                        </p>
+                        <div className='horizontal-divider'>
+                            <div className='line-left' />
+                            <p>or</p>
+                            <div className='line-right' />
                         </div>
-                    </div>
-                    <div className='input-field'>
-                        <label htmlFor='password'>Password</label>
                         <div className='input-wrapper'>
-                            <input type='password' name='password' id='password' />
-                        </div>
-                    </div>
-                    <p >
-                        Forgot Password?  <Link to='#'>Reset Password </Link>
-                    </p>
-                    <button type='submit' className='auth-form-submit'>
-                        Login
-                    </button>
-                </form>
-                <p className='redirect'>
-                    New to electronic warehouse?{" "}
-                    <span onClick={() => navigate("/signup")}>Create New Account</span>
-                </p>
-                <div className='horizontal-divider'>
-                    <div className='line-left' />
-                    <p>or</p>
-                    <div className='line-right' />
-                </div>
-                <div className='input-wrapper'>
-                    <button onClick={googleAuth} className='google-auth'>
+                            <button onClick={googleAuth} className='google-auth'>
 
-                        <p> Continue with Google </p>
-                    </button>
+                                <p> Continue with Google </p>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
