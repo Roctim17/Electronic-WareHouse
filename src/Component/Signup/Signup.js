@@ -40,6 +40,7 @@ const Signup = () => {
 
         console.log(e.target.checked);
         setRegistered(e.target.checked);
+        verifyEmail();
     }
     if (user) {
         navigate('/')
@@ -54,19 +55,8 @@ const Signup = () => {
         if (password.length < 6) {
             setError('Password must be 6 characters or longer')
             return;
-        } else {
-            createUserWithEmailAndPassword(auth, email, password)
-                .then(result => {
-                    const user = result.user;
-                    console.log(user)
-                    setEmail('');
-                    setPassword('');
-                    verifyEmail();
-                })
-                .catch(error => {
-                    setError('User all ready register please login')
-                })
-        };
+        }
+        createUserWithEmailAndPassword(email, password);
     }
     // User for Google sign in
     const [userGoogle, setUserGoogle] = useState({});
@@ -91,7 +81,6 @@ const Signup = () => {
                 toast.success('Email Verification Sent')
             })
             .catch(error => {
-                toast.error(error.message)
                 setError(error.message)
             })
     }
@@ -130,7 +119,7 @@ const Signup = () => {
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
-                        <Button onChange={handleRegisteredChange} variant="primary" type="submit" className='w-100'>
+                        <Button onChange={handleRegisteredChange} variant="primary" type="submit" className='w-100' >
                             Sign Up
                         </Button>
                         <p>
