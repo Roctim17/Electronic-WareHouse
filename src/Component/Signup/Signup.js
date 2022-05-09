@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, } from 'react-firebase-hooks/auth';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, sendEmailVerification, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../Firebase.init';
+import toast from 'react-hot-toast';
 
 
 
@@ -53,8 +54,19 @@ const Signup = () => {
         if (password.length < 6) {
             setError('Password must be 6 characters or longer')
             return;
-        }
-        createUserWithEmailAndPassword(email, password);
+        } else {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user)
+                    setEmail('');
+                    setPassword('');
+                    verifyEmail();
+                })
+                .catch(error => {
+                    setError('User all ready register please login')
+                })
+        };
     }
     // User for Google sign in
     const [userGoogle, setUserGoogle] = useState({});
@@ -71,6 +83,19 @@ const Signup = () => {
                 console.log('error', error)
             })
     }
+
+
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                toast.success('Email Verification Sent')
+            })
+            .catch(error => {
+                toast.error(error.message)
+                setError(error.message)
+            })
+    }
+
     return (
         <div className='signin'>
             <h1>Sign Up</h1>

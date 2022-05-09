@@ -6,7 +6,7 @@ const AddProduct = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data)
-        const url = `http://localhost:5000/product`;
+        const url = `https://limitless-coast-93493.herokuapp.com/product`;
         fetch(url, {
             method: 'POST',
             headers: {
