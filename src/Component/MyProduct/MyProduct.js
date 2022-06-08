@@ -14,9 +14,12 @@ const MyProduct = () => {
 
         const getProduct = async () => {
             const email = user.email;
-            const url = `https://limitless-coast-93493.herokuapp.com/myProduct?email=${email}`;
-            const { data } = await axios.get(url);
-            setMyProduct(data)
+            console.log(email);
+            if (email) {
+                const url = `https://limitless-coast-93493.herokuapp.com/myProduct?email=${email}`;
+                const { data } = await axios.get(url);
+                setMyProduct(data)
+            }
         }
         getProduct();
 

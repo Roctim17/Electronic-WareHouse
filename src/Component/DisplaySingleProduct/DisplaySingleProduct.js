@@ -15,7 +15,7 @@ const DisplaySingleProduct = ({ product }) => {
                             <div className="">
                                 <h3>{name}</h3>
                                 <h5>supplier Name:{supplier}</h5>
-                                <p>{description.slice(0, 150)} ...</p>
+                                <p>{description.slice(0, 120)} ...</p>
                                 <h6>Price: {price} $ </h6>
                                 <h5>Quantity: {quantity}</h5>
                             </div>

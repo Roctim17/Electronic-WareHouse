@@ -2,7 +2,8 @@ Code Link Client Side: https://github.com/ProgrammingHeroWC4/warehouse-managemen
 
 Code Link Server Side: https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Roctim17
 
-Live Site Link: https://resilient-sawine-f4810f.netlify.app/
+Live Site Link: https://resilient-sawine-f4810f.netlify.app/ 
+https://warehouse-acdfc.web.app/
 
 StackOverflow  : https://stackoverflow.com/questions/72175516/my-local-server-stop-i-facing-this-issue
 

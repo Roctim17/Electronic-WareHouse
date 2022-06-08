@@ -11,8 +11,9 @@ import '../AddProduct/AddProduct.css'
 const AddMyProduct = () => {
     const { id } = useParams;
     const [product] = useProductDetails(id);
+    console.log(product);
     const [user] = useAuthState(auth)
-
+    console.log(id)
 
     const handleMyProduct = event => {
         event.preventDefault();
