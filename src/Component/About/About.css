@@ -1,8 +1,18 @@
 .about img {
     width: 100%;
+    border-radius: 15px;
 }
 
-.about .text {
+.about .text h1 {
     text-align: center;
+    padding-top: 20%;
 
+}
+
+@media only screen and (max-width:688px) {
+    .about .text h1 {
+
+        padding-top: 0%;
+
+    }
 }

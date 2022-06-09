@@ -5,10 +5,10 @@ const Footer = () => {
     return (
         <div className='footer'>
             <div className="logo">
-                <h3 className=''>Electronic WareHouse</h3>
+                <h3 className=''>Electronic</h3>
             </div>
             <div className="copy">
-                <p>Copyright &copy; 2021 Electronic WareHouse</p>
+                <p>Copyright &copy; 2021 Electronic</p>
             </div>
             <div className="social">
                 <i className="fab fa-facebook"></i>

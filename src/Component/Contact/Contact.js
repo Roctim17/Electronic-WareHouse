@@ -3,25 +3,25 @@ import './Contact.css'
 
 const Contact = () => {
     return (
-        <div>
-            <div className="p-3" id="contact">
-                <h1>Contact Electronic WareHouse</h1>
+        <div className=''>
+            <div className="p-3 pb-5" id="contact">
+                <h1 className='pt-3 pb-3'>Contact Us</h1>
                 <div className="container">
 
                     <div className="half-width rightside">
                         <h3>Get in touch</h3>
-                        <div className="contactbox">
-                            <input className="contact" type="text" placeholder="Name" />
-                            <input className="contact" type="email" placeholder="Email" />
+                        <div className="contact-box">
+                            <input className="contact text-light" type="text" placeholder="Name" />
+                            <input className="contact text-light" type="email" placeholder="Email" />
                         </div>
                         <div>
-                            <input className="contact project" type="text" placeholder="Project" />
+                            <input className="contact project text-light" type="text" placeholder="Project" />
                         </div>
                         <div>
-                            <textarea className="contact project" name="" id="" cols="30" rows="10"
+                            <textarea className="contact project text-light" name="" id="" cols="30" rows="10"
                                 placeholder="Message"></textarea>
                         </div>
-                        <input className="button" type="button" value="Send Message" />
+                        <input className="contact text-light w-50" type="button" value="Send Message" />
                     </div>
                 </div>
             </div>

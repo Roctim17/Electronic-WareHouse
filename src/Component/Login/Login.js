@@ -85,11 +85,11 @@ const Login = () => {
 
     return (
         <div className='signin'>
-            <h1>Sign In</h1>
+            <h1 className="pt-5">Sign In</h1>
             <div className="row">
                 <div className="col-md-7 col-sm-12">
                 </div>
-                <div className="col-md-4 col-sm-12 form p-5">
+                <div className="col-md-4 col-sm-12 form p-5 m-auto">
 
 
                     <Form onSubmit={handleUserSignin} className='w-100 m-auto'>

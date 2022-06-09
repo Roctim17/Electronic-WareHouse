@@ -30,44 +30,44 @@ const Header = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Electronic WareHouse</Link>
+                    <Link className="navbar-brand" to="/"><h1>Electronic</h1></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
 
-                            <Nav>
-                                <Link className="nav-link" to="/">Home</Link>
-                                <Link className="nav-link" to="/about">About</Link>
-                                <Link className="nav-link" to="/blog">Blog</Link>
-                                <Link className="nav-link" to="/product">Product</Link>
-                                {
-                                    user?.uid ? (<Link className="nav-link" to="/AddNewProduct">Add Product</Link>
-                                    ) : ('')
 
-                                }
-                                {
-                                    user?.uid ? (
-                                        <Link className="nav-link" to="/manage">Manage Product</Link>) : ('')
+                            <Link className="nav-link" to="/">HOME</Link>
+                            <Link className="nav-link" to="/about">ABOUT</Link>
+                            <Link className="nav-link" to="/product">PRODUCT</Link>
+                            {
+                                user?.uid ? (<Link className="nav-link" to="/AddNewProduct">ADD PRODUCT</Link>
+                                ) : ('')
 
-                                }
-                                {
-                                    user?.uid ? (
-                                        <Link className="nav-link" to="/myProduct">My Product</Link>) : ('')
+                            }
+                            {
+                                user?.uid ? (
+                                    <Link className="nav-link" to="/manage">MANAGE PRODUCT</Link>) : ('')
 
-                                }
+                            }
+                            {
+                                user?.uid ? (
+                                    <Link className="nav-link" to="/myProduct">MY PRODUCT</Link>) : ('')
 
+                            }
 
-                                {
-                                    user?.uid ? (
-                                        <button onClick={handleLogOut} className='btn btn-danger'>Log Out <i className="fas fa-sign-out-alt" ></i></button>
-                                    ) : (
-                                        <Link className="nav-link" to="/login" >Login</Link>
-                                    )
+                            <Link className="nav-link" to="/blog">BLOG</Link>
 
-                                }
-                            </Nav>
+                            {
+                                user?.uid ? (
+                                    <button onClick={handleLogOut} className='btn btn-danger'>LOG OUT <i className="fas fa-sign-out-alt" ></i></button>
+                                ) : (
+                                    <Link className="nav-link" to="/login" >LOGIN</Link>
+                                )
+
+                            }
+
 
                         </div>
                     </div>

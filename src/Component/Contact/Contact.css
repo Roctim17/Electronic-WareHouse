@@ -1,6 +1,6 @@
 #contact {
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url(https://i.ibb.co/85Mk9tT/pexels-ahmed-aqtai-63572.jpg);
+    background-image: linear-gradient(rgba(10, 10, 10, 0.716), rgba(82, 78, 84, 0.64)), url("/public/image/image6.jpg");
     background-repeat: no-repeat;
     background-position: center;
     color: #fff;
@@ -14,7 +14,7 @@
     margin: 10px;
     width: 78.5%;
     text-align: center;
-    background-color: #ffffff60;
+    background-color: #ffffff00;
     box-shadow: 5px 5px 9px;
 }
 

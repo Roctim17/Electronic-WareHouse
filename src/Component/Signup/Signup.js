@@ -86,12 +86,12 @@ const Signup = () => {
     }
 
     return (
-        <div className='signin'>
+        <div className='signin pt-5'>
             <h1>Sign Up</h1>
             <div className=" row">
                 <div className="col-md-7 col-sm-12">
                 </div>
-                <div className="col-md-4 col-sm-12 form p-5">
+                <div className="col-md-4 col-sm-12 form p-5 m-auto">
                     <Form onSubmit={handleCreateUser} className='w-100 m-auto'>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Your Name</Form.Label>

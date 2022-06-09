@@ -1,5 +1,5 @@
 .signin {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url(https://i.ibb.co/85Mk9tT/pexels-ahmed-aqtai-63572.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url("/public/image/image4.jpg");
     color: #fff;
     background-position: center;
     background-size: cover;
@@ -7,6 +7,7 @@
 
 .signin a,
 h1 {
-    color: chocolate;
+    color: #fb5200;
     text-decoration: none;
+    font-weight: bold;
 }

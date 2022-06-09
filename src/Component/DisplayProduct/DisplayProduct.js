@@ -6,9 +6,9 @@ import DisplaySingleProduct from '../DisplaySingleProduct/DisplaySingleProduct';
 const DisplayProduct = () => {
     const [products] = useProduct([]);
     return (
-        <div>
+        <div className='pt-5 pb-3'>
             <div className='product-container pt-3'>
-                <h1> Product</h1>
+                <h1 > Product</h1>
                 <div className="product">
                     {
                         products.slice(0, 6).map(product => <DisplaySingleProduct
