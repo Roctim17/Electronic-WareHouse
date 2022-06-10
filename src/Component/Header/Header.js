@@ -38,32 +38,32 @@ const Header = () => {
                         <div className="navbar-nav ms-auto">
 
 
-                            <Link className="nav-link" to="/">HOME</Link>
-                            <Link className="nav-link" to="/about">ABOUT</Link>
-                            <Link className="nav-link" to="/product">PRODUCT</Link>
-                            {
-                                user?.uid ? (<Link className="nav-link" to="/AddNewProduct">ADD PRODUCT</Link>
+                            <Link className="btn nav-link" to="/">HOME</Link>
+                            <Link className="btn nav-link" to="/about">ABOUT</Link>
+                            <Link className="btn nav-link" to="/product">PRODUCT</Link>
+                            {/* {
+                                user?.uid ? (<Link className="btn nav-link" to="/AddNewProduct">ADD PRODUCT</Link>
                                 ) : ('')
 
+                            } */}
+                            {
+                                user?.uid ? (
+                                    <Link className="btn nav-link" to="/manage">MANAGE PRODUCT</Link>) : ('')
+
                             }
                             {
                                 user?.uid ? (
-                                    <Link className="nav-link" to="/manage">MANAGE PRODUCT</Link>) : ('')
-
-                            }
-                            {
-                                user?.uid ? (
-                                    <Link className="nav-link" to="/myProduct">MY PRODUCT</Link>) : ('')
+                                    <Link className="btn nav-link" to="/myProduct">MY PRODUCT</Link>) : ('')
 
                             }
 
-                            <Link className="nav-link" to="/blog">BLOG</Link>
+                            <Link className="btn nav-link" to="/blog">BLOG</Link>
 
                             {
                                 user?.uid ? (
-                                    <button onClick={handleLogOut} className='btn btn-danger'>LOG OUT <i className="fas fa-sign-out-alt" ></i></button>
+                                    <button onClick={handleLogOut} className='btn '>LOG OUT <i className="fas fa-sign-out-alt" ></i></button>
                                 ) : (
-                                    <Link className="nav-link" to="/login" >LOGIN</Link>
+                                    <Link className="btn nav-link" to="/login" >LOGIN</Link>
                                 )
 
                             }
