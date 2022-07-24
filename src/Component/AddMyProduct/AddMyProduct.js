@@ -1,27 +1,22 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
 import { auth } from '../../Firebase.init';
-import useProductDetails from '../../Hooks/useProductDetails/useProductDetails';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import '../AddProduct/AddProduct.css'
 
 
 const AddMyProduct = () => {
-    const { id } = useParams;
-    const [product] = useProductDetails(id);
-    console.log(product);
     const [user] = useAuthState(auth)
-    console.log(id)
+    if (user) {
+        console.log(user);
+    }
 
     const handleMyProduct = event => {
         event.preventDefault();
         const myProduct = {
-
             email: user.email,
-            product: product.name,
-            id: id,
+            supplierName: user.displayName,
             name: event.target.name.value,
             quantity: event.target.quantity.value,
             description: event.target.description.value,
@@ -58,6 +53,7 @@ const AddMyProduct = () => {
                     <input className='btn btn-success input' type="submit" value='Update' />
                 </form>
             </div>
+
         </div>
 
     );

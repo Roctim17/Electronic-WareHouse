@@ -12,7 +12,7 @@ const ProductUpdate = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
-    }, []);
+    }, [id]);
 
     //  add quantity
     const handleAddQuantity = e => {
