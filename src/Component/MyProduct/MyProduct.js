@@ -15,7 +15,7 @@ const MyProduct = () => {
             const email = user?.email;
             console.log(email);
             if (email) {
-                const url = `https://limitless-coast-93493.herokuapp.com/myProduct?email=${email}`;
+                const url = `https://secure-garden-04436.herokuapp.com/myProduct?email=${email}`;
                 const { data } = await axios.get(url);
                 setMyProduct(data)
             }
@@ -26,7 +26,7 @@ const MyProduct = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Sure ! Are you want to delete?')
         if (proceed) {
-            const url = `https://limitless-coast-93493.herokuapp.com/product/${id}`;
+            const url = `https://secure-garden-04436.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

@@ -7,7 +7,7 @@ const useProductDetails = id => {
 
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const url = `https://limitless-coast-93493.herokuapp.com/product/${id}`;
+        const url = `https://secure-garden-04436.herokuapp.com/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))

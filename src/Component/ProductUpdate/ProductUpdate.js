@@ -8,7 +8,7 @@ const ProductUpdate = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     useEffect(() => {
-        const url = `https://limitless-coast-93493.herokuapp.com/product/${id}`;
+        const url = `https://secure-garden-04436.herokuapp.com/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -27,7 +27,7 @@ const ProductUpdate = () => {
         if (quantityNew > 0) {
             const quantity = previousQuantityNumber + quantityNumber;
             const updateQuantity = { quantity };
-            const url = `https://limitless-coast-93493.herokuapp.com/product/${id}`;
+            const url = `https://secure-garden-04436.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -48,7 +48,7 @@ const ProductUpdate = () => {
     const handleDelivered = () => {
         const quantity = product.quantity - 1;
         const updateQuantity = { quantity };
-        const url = `https://limitless-coast-93493.herokuapp.com/product/${id}`;
+        const url = `https://secure-garden-04436.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

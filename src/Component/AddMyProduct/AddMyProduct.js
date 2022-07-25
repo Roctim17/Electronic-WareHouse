@@ -24,7 +24,7 @@ const AddMyProduct = () => {
             supplier: event.target.supplier.value,
             image: event.target.image.value
         }
-        axios.post('https://limitless-coast-93493.herokuapp.com/myProduct', myProduct)
+        axios.post('https://secure-garden-04436.herokuapp.com/myProduct', myProduct)
             .then(response => {
                 const { data } = response;
                 console.log(response)
